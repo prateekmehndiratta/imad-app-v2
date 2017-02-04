@@ -10,13 +10,14 @@ button.onclick=function(){
                 var span=document.getElementbyId('count');
                 span.innerHTML = counter.tostring();
             }
-    }
+         }
     };
+
+
+
+    request.open('GET', 'http://prateekmehndiratta.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
-
-
-request.open('GET','http://prateekmehndiratta.imad.hasura-app.io/counter',true);
-request.send(null);
     //make a request to counter and capture the response and store it in a varible in the correct span.
     
     
