@@ -13,9 +13,7 @@ button.onclick=function(){
          }
     };
 
-app.get('/ui/main.js', function (req, res) {
-res.sendFile(path.join(__dirname, 'ui', 'main.js'));
-});
+
 
     request.open('GET', 'http://prateekmehndiratta.imad.hasura-app.io/counter',true);
     request.send(null);
@@ -34,3 +32,6 @@ res.sendFile(path.join(__dirname, 'ui', 'main.js'));
             list+= '<li>' + names[i];
         }
     };
+    app.get('/ui/main.js', function (req, res) {
+res.sendFile(path.join(__dirname, 'ui', 'main.js'));
+});
