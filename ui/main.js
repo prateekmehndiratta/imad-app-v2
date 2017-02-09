@@ -1,5 +1,5 @@
 
-var button= document.getElementbyId('counter');
+var button= document.getElementById('counter');
 button.onclick=function(){
     var request=new XMLHttpRequest();
     
