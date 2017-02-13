@@ -15,7 +15,7 @@ button.onclick=function(){
 
 
 
-    request.open('GET', 'http://prateekmehndiratta.imad.hasura-app.io/',true);
+    request.open('GET', 'http://prateekmehndiratta.imad.hasura-app.io/counter',true);
     request.send(null);
 };
     //make a request to counter and capture the response and store it in a varible in the correct span.
