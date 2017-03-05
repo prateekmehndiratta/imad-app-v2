@@ -4,6 +4,7 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 var crypto=require('crypto');
 
 
@@ -34,7 +35,10 @@ var hashedString=hash(req.params.input,'This is sone random string');
 res.send(hashedString);
 });
 
-app.get('/create-user', function(req, res) {
+app.post('/create-user', function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    
     varsalt=crypto.getRandomBytes(128).toString;
     var dbString=hash(passwordsal);
 pool.query('INSERT INTO "user"(username,password) VALUES ($1,$2)', [username.dbString], function(err,result) {
