@@ -4,6 +4,7 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var crypto=require('crypto');
 
 
 app.get('/', function (req, res) {
@@ -20,6 +21,16 @@ app.get('/ui/style.css', function (req, res) {
 });
 app.get('/prateek',function(req,res){
     res.send("heelo this is my webpages");
+});
+
+function hash(input,salt){
+    //how to create a hash
+    var hashed=crypto.pbkdf25sync(input,salt,10000,512,'sha512');
+return hashed.toString('hex');
+}
+
+var hashedString=hash(req.params.input);
+res.send(hashedString);
 });
 
 app.get('/ui/madi.png', function (req, res) {
