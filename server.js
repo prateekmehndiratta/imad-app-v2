@@ -23,15 +23,17 @@ app.get('/prateek',function(req,res){
     res.send("heelo this is my webpages");
 });
 
+
+app.get('/hash/:input',function(req,res) {
+var hashedString=hash(req.params.input);
+res.send(hashedString);
+});
+ 
 function hash(input,salt){
     //how to create a hash
     var hashed=crypto.pbkdf25sync(input,salt,10000,512,'sha512');
 return hashed.toString('hex');
 }
-app.get('/hash/:input',function(req,res) {
-var hashedString=hash(req.params.input);
-res.send(hashedString);
-});
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
