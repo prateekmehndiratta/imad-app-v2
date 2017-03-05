@@ -19,9 +19,6 @@ app.get('/ui/style.css', function (req, res) {
     
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
-app.get('/prateek',function(req,res){
-    res.send("heelo this is my webpages");
-});
 
 
 
@@ -29,7 +26,7 @@ app.get('/prateek',function(req,res){
 function hash(input,salt){
     //how to create a hash
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-return hashed.toString('hex');
+return["pbkdf2",salt,10000,hashed.toString('hex')];
 }  
 
 app.get('/hash/:input', function(req,res) {
