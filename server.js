@@ -33,8 +33,33 @@ app.get('/hash/:input', function(req,res) {
 var hashedString=hash(req.params.input,'This is sone random string');
 res.send(hashedString);
 });
- 
 
+app.get('/create-user', function(req, res) {
+    varsalt=crypto.getRandomBytes(128).toString;
+    var dbString=hash(passwordsal);
+pool.query('INSERT INTO "user"(username,password) VALUES ($1,$2)', [username.dbString], function(err,result) {
+   
+   if(err) {
+            res.status(500).send(err.toString());
+        }
+        else{
+            res.send('USER SUCCESFULLT CREATED'+ username);
+        }
+});
+});
+var pool=newPool(config);
+app.get('/test-db',function(req,res)
+{
+    pool.query('SELECT * FROM TEST',function(err,result){
+        if(err) {
+            res.status(500).send(err.toString());
+        }
+        else{
+            res.send(JSON.stringify(result.rows));
+        }
+    });
+});
+        
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
